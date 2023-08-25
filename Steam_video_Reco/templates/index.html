@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+<link rel="shortcut icon" href="C:/steamvediogame/templates/2503508.png">
+    <meta charset="UTF-8">
+    <title>RS</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #1E1E1E;
+            margin: 0;
+            padding: 0;
+        }
+
+        .login {
+            text-align: center;
+            background-color: #292929;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 100px auto;
+            max-width: 400px;
+        }
+
+        .login h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 24px;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+        }
+
+        .login form {
+            margin-bottom: 20px;
+        }
+
+        .login input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #333;
+            border-radius: 3px;
+            font-family: 'Arimo', sans-serif;
+            font-size: 14px;
+            background-color: #333;
+            color: #FFFFFF;
+        }
+
+        .login .btn-primary {
+            background-color: #007BFF;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-family: 'Hind', sans-serif;
+            font-size: 16px;
+        }
+
+        .login .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .button {
+            display: inline-block;
+            color: #007BFF;
+            text-decoration: none;
+            font-family: 'Arimo', sans-serif;
+            font-size: 14px;
+        }
+
+        .button:hover {
+            text-decoration: underline;
+        }
+
+        .recommended-games {
+            margin-top: 30px;
+            font-family: 'Arimo', sans-serif;
+            font-size: 16px;
+        }
+
+        .recommended-games ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .recommended-games li {
+            margin: 5px 0;
+            font-weight: bold;
+            color: #FFFFFF;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+            font-family: 'Arimo', sans-serif;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login">
+        <h1>Game Recommendation System</h1>
+        
+        <form action="{{url_for('recommendation')}}" method="POST">
+            <input type="text" name="user_id" placeholder="User ID" required="required">
+            <button type="submit" class="btn-primary">Predict</button>
+        </form>
+        
+        <div class="recommended-games">
+            <h1><---Recommended Games---></h1>
+            <ul>
+                {% if error_message %}
+                <div class="error">{{ error_message }}</div>
+                {% endif %}
+
+                {% for game in recommended_games %}
+                <li>{{ game }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
