@@ -1,5 +1,4 @@
-
-# Project Documentation: Sculpture Shipping Cost Prediction
+Sculpture Shipping Cost Prediction
 
 ## 1. Project Overview
 The objective of this project is to develop a machine learning model to predict shipping costs for sculptures based on various attributes, including artist reputation, sculpture dimensions, material, shipping requirements, and destination details. This model will assist the company in estimating costs accurately, improving logistics planning, and offering better service to customers.
